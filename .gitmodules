@@ -25,3 +25,6 @@
 [submodule "wfc_repli-hub"]
 	path = wfc_repli-hub
 	url = git@gitlab.lan:cpp/wfc_repli-hub.git
+[submodule "wfc_broker"]
+	path = wfc_broker
+	url = git@gitlab.lan:cpp/wfc_broker.git
