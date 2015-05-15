@@ -28,3 +28,6 @@
 [submodule "wfc_broker"]
 	path = wfc_broker
 	url = git@github.lan:cpp/wfc_broker.git
+[submodule "iow"]
+	path = iow
+	url = git@github.lan:cpp/iow.git
