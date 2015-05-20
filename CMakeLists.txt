@@ -15,6 +15,7 @@ add_subdirectory(wfc_startup)
 add_subdirectory(wfc_config)
 add_subdirectory(wfc_core)
 add_subdirectory(wfc_logger)
+add_subdirectory(wfc_server)
 #add_subdirectory(wfc_hub)
 #add_subdirectory(wfc_broker)
 #add_subdirectory(wfc_repli-hub)
@@ -29,12 +30,13 @@ add_library(
 )
 
 set(
-  wfcroot_libraries 
+  wfcroot_libraries
+  wfc_server
   wfc_logger
-  wfc_core 
-  wfc_config 
-  wfc_startup 
-  wfc 
+  wfc_core
+  wfc_config
+  wfc_startup
+  wfc
 )
 
 target_link_libraries(wfcroot ${wfcroot_libraries})
