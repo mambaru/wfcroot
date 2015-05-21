@@ -2,12 +2,14 @@ cmake_minimum_required(VERSION 2.6)
 
 project(wfcroot)
 
+if ( NOT WFC_READY )
+  set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/wfc/cmake")
+  include(Wfc)
+endif()
+
 include_directories(wfc)
 include_directories(iow)
 
-if ( NOT CMAKE_MODULE_PATH )
-  set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/wfc/cmake)
-endif()
 
 add_subdirectory(iow)
 add_subdirectory(wfc)
