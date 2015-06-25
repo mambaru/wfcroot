@@ -18,6 +18,7 @@ add_subdirectory(wfc_config)
 add_subdirectory(wfc_core)
 add_subdirectory(wfc_logger)
 add_subdirectory(wfc_server)
+add_subdirectory(wfc_client)
 #add_subdirectory(wfc_hub)
 #add_subdirectory(wfc_broker)
 #add_subdirectory(wfc_repli-hub)
@@ -33,6 +34,7 @@ add_library(
 
 set(
   wfcroot_libraries
+  wfc_client
   wfc_server
   wfc_logger
   wfc_core
