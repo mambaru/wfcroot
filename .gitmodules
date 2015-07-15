@@ -34,3 +34,7 @@
 [submodule "wfc_broker"]
 	path = wfc_broker
 	url = git@github.lan:cpp/wfc_broker.git
+[submodule "wfc_client"]
+        path = wfc_client
+	url = git@github.lan:cpp/wfc_client.git
+
