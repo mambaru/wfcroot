@@ -9,7 +9,9 @@ endif()
 
 include_directories(wfc)
 include_directories(iow)
+include_directories(faslib)
 
+add_subdirectory(faslib)
 add_subdirectory(iow)
 add_subdirectory(wfc)
 add_subdirectory(wfc_startup)

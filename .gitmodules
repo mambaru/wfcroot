@@ -38,3 +38,6 @@
         path = wfc_client
 	url = git@github.lan:cpp/wfc_client.git
 
+[submodule "faslib"]
+	path = faslib
+	url = https://github.com/migashko/faslib.git
