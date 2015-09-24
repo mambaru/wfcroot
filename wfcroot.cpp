@@ -1,3 +1,4 @@
+#include "wfc_jsonrpc/jsonrpc/jsonrpc_package.hpp"
 #include "wfc_client/client/client_package.hpp"
 #include "wfc_server/server/server_package.hpp"
 #include "wfc_logger/logger/logger_package.hpp"
@@ -17,6 +18,7 @@ wfcroot( std::list< std::shared_ptr<ipackage> > packages)
   packages.push_back( std::make_shared<logger_package>() );
   packages.push_back( std::make_shared<server_package>() );
   packages.push_back( std::make_shared<client_package>() );
+  packages.push_back( std::make_shared<jsonrpc_package>() );
   return packages;
 }
 

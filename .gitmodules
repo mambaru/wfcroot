@@ -1,3 +1,6 @@
+[submodule "faslib"]
+	path = faslib
+	url = https://github.com/migashko/faslib.git
 [submodule "iow"]
 	path = iow
 	url = git@github.lan:cpp/iow.git
@@ -37,7 +40,6 @@
 [submodule "wfc_client"]
         path = wfc_client
 	url = git@github.lan:cpp/wfc_client.git
-
-[submodule "faslib"]
-	path = faslib
-	url = https://github.com/migashko/faslib.git
+[submodule "wfc_jsonrpc"]
+	path = wfc_jsonrpc
+	url = git@github.lan:cpp/wfc_jsonrpc.git
