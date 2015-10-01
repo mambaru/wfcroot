@@ -22,12 +22,6 @@ add_subdirectory(wfc_server)
 add_subdirectory(wfc_client)
 add_subdirectory(wfc_jsonrpc)
 
-#add_subdirectory(wfc_hub)
-#add_subdirectory(wfc_broker)
-#add_subdirectory(wfc_repli-hub)
-#add_subdirectory(wfc_pubsub-service)
-#add_subdirectory(wfc_pubsub-gateway)
-
 include(Wfc)
 
 add_library(
