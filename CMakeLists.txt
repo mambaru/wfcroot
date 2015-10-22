@@ -25,7 +25,7 @@ add_subdirectory(wfc_jsonrpc)
 include(Wfc)
 
 add_library(
-  wfcroot STATIC
+  wfcroot
   wfcroot.cpp
 )
 
