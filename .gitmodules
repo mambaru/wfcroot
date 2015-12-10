@@ -1,6 +1,6 @@
 [submodule "faslib"]
 	path = faslib
-	url = https://github.com/migashko/faslib.git
+	url = git@github.lan:cpp/faslib.git
 [submodule "iow"]
 	path = iow
 	url = git@github.lan:cpp/iow.git
