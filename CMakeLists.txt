@@ -14,13 +14,8 @@ include_directories(faslib)
 add_subdirectory(faslib)
 add_subdirectory(iow)
 add_subdirectory(wfc)
-add_subdirectory(wfc_startup)
-add_subdirectory(wfc_config)
 add_subdirectory(wfc_core)
-add_subdirectory(wfc_logger)
 add_subdirectory(wfc_io)
-#add_subdirectory(wfc_server)
-#add_subdirectory(wfc_client)
 add_subdirectory(wfc_jsonrpc)
 
 include(Wfc)
@@ -34,12 +29,7 @@ set(
   wfcroot_libraries
   wfc_jsonrpc
   wfc_io
-#  wfc_client
-#  wfc_server
-  wfc_logger
   wfc_core
-  wfc_config
-  wfc_startup
   wfc
 )
 
