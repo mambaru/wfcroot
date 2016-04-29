@@ -1,9 +1,9 @@
 #include "wfc_jsonrpc/jsonrpc/jsonrpc_package.hpp"
 #include "wfc_io/package/io_package.hpp"
-#include "wfc_logger/logger/logger_package.hpp"
-#include "wfc_core/core/core_package.hpp"
-#include "wfc_config/config/config_package.hpp"
-#include "wfc_startup/startup/startup_package.hpp"
+#include "wfc_logger/package/logger_package.hpp"
+#include "wfc_core/package/core_package.hpp"
+#include "wfc_config/package/config_package.hpp"
+#include "wfc_startup/package/startup_package.hpp"
 #include "wfcroot.hpp"
 #include <algorithm>
 #include <iostream>
