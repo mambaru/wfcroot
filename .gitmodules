@@ -19,9 +19,6 @@
 [submodule "wfc_logger"]
 	path = wfc_logger
 	url = git@github.lan:cpp/wfc_logger.git
-[submodule "wfc_server"]
-	path = wfc_server
-	url = git@github.lan:cpp/wfc_server.git
 [submodule "wfc_hub"]
 	path = wfc_hub
 	url = git@github.lan:cpp/wfc_hub.git
@@ -37,9 +34,6 @@
 [submodule "wfc_broker"]
 	path = wfc_broker
 	url = git@github.lan:cpp/wfc_broker.git
-[submodule "wfc_client"]
-        path = wfc_client
-	url = git@github.lan:cpp/wfc_client.git
 [submodule "wfc_jsonrpc"]
 	path = wfc_jsonrpc
 	url = git@github.lan:cpp/wfc_jsonrpc.git
