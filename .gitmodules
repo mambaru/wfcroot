@@ -7,33 +7,9 @@
 [submodule "wfc"]
 	path = wfc
 	url = git@github.lan:cpp/wfc.git
-[submodule "wfc_startup"]
-	path = wfc_startup
-	url = git@github.lan:cpp/wfc_startup.git
-[submodule "wfc_config"]
-	path = wfc_config
-	url = git@github.lan:cpp/wfc_config.git
 [submodule "wfc_core"]
 	path = wfc_core
 	url = git@github.lan:cpp/wfc_core.git
-[submodule "wfc_logger"]
-	path = wfc_logger
-	url = git@github.lan:cpp/wfc_logger.git
-[submodule "wfc_hub"]
-	path = wfc_hub
-	url = git@github.lan:cpp/wfc_hub.git
-[submodule "wfc_pubsub-service"]
-	path = wfc_pubsub-service
-	url = git@github.lan:cpp/wfc_pubsub-service.git
-[submodule "wfc_pubsub-gateway"]
-	path = wfc_pubsub-gateway
-	url = git@github.lan:cpp/wfc_pubsub-gateway.git
-[submodule "wfc_repli-hub"]
-	path = wfc_repli-hub
-	url = git@github.lan:cpp/wfc_repli-hub.git
-[submodule "wfc_broker"]
-	path = wfc_broker
-	url = git@github.lan:cpp/wfc_broker.git
 [submodule "wfc_jsonrpc"]
 	path = wfc_jsonrpc
 	url = git@github.lan:cpp/wfc_jsonrpc.git
