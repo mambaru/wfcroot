@@ -18,8 +18,9 @@ add_subdirectory(wfc_startup)
 add_subdirectory(wfc_config)
 add_subdirectory(wfc_core)
 add_subdirectory(wfc_logger)
-add_subdirectory(wfc_server)
-add_subdirectory(wfc_client)
+add_subdirectory(wfc_io)
+#add_subdirectory(wfc_server)
+#add_subdirectory(wfc_client)
 add_subdirectory(wfc_jsonrpc)
 
 include(Wfc)
@@ -32,8 +33,9 @@ add_library(
 set(
   wfcroot_libraries
   wfc_jsonrpc
-  wfc_client
-  wfc_server
+  wfc_io
+#  wfc_client
+#  wfc_server
   wfc_logger
   wfc_core
   wfc_config

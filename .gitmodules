@@ -43,3 +43,6 @@
 [submodule "wfc_jsonrpc"]
 	path = wfc_jsonrpc
 	url = git@github.lan:cpp/wfc_jsonrpc.git
+[submodule "wfc_io"]
+	path = wfc_io
+	url = git@github.lan:cpp/wfc_io.git

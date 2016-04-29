@@ -1,6 +1,5 @@
 #include "wfc_jsonrpc/jsonrpc/jsonrpc_package.hpp"
-#include "wfc_client/package/client_package.hpp"
-#include "wfc_server/package/server_package.hpp"
+#include "wfc_io/package/io_package.hpp"
 #include "wfc_logger/logger/logger_package.hpp"
 #include "wfc_core/core/core_package.hpp"
 #include "wfc_config/config/config_package.hpp"
@@ -35,8 +34,7 @@ wfcroot( std::list< std::shared_ptr<ipackage> > packages)
     std::make_shared<config_package>(),
     std::make_shared<core_package>(),
     std::make_shared<logger_package>(),
-    std::make_shared<server_package>(),
-    std::make_shared<client_package>(),
+    std::make_shared<io_package>(),
     std::make_shared<jsonrpc_package>()
   };
 
