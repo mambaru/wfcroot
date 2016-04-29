@@ -1,9 +1,7 @@
+#include "wfc_core/package/core_package.hpp"
 #include "wfc_jsonrpc/jsonrpc/jsonrpc_package.hpp"
 #include "wfc_io/package/io_package.hpp"
-#include "wfc_logger/package/logger_package.hpp"
-#include "wfc_core/package/core_package.hpp"
-#include "wfc_config/package/config_package.hpp"
-#include "wfc_startup/package/startup_package.hpp"
+
 #include "wfcroot.hpp"
 #include <algorithm>
 #include <iostream>
@@ -30,10 +28,7 @@ wfcroot( std::list< std::shared_ptr<ipackage> > packages)
 
   std::list< std::shared_ptr<ipackage> > defpack =
   {
-    std::make_shared<startup_package>(),
-    std::make_shared<config_package>(),
     std::make_shared<core_package>(),
-    std::make_shared<logger_package>(),
     std::make_shared<io_package>(),
     std::make_shared<jsonrpc_package>()
   };
