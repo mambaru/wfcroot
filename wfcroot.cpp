@@ -1,6 +1,6 @@
 #include "wfc_jsonrpc/jsonrpc/jsonrpc_package.hpp"
-#include "wfc_client/client/client_package.hpp"
-#include "wfc_server/server/server_package.hpp"
+#include "wfc_client/package/client_package.hpp"
+#include "wfc_server/package/server_package.hpp"
 #include "wfc_logger/logger/logger_package.hpp"
 #include "wfc_core/core/core_package.hpp"
 #include "wfc_config/config/config_package.hpp"
