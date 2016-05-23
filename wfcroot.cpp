@@ -1,5 +1,5 @@
+#include "wfc_jsonrpc/package/jsonrpc_package.hpp"
 #include "wfc_core/package/core_package.hpp"
-#include "wfc_jsonrpc/jsonrpc/jsonrpc_package.hpp"
 #include "wfc_io/package/io_package.hpp"
 
 #include "wfcroot.hpp"
