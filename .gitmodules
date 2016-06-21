@@ -16,3 +16,6 @@
 [submodule "wfc_io"]
 	path = wfc_io
 	url = git@github.lan:cpp/wfc_io.git
+[submodule "wjson"]
+	path = wjson
+	url = git@github.lan:cpp/wjson.git
