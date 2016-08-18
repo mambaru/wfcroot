@@ -19,3 +19,6 @@
 [submodule "wjson"]
 	path = wjson
 	url = git@github.lan:cpp/wjson.git
+[submodule "wjrpc"]
+	path = wjrpc
+	url = git@github.lan:cpp/wjrpc.git
