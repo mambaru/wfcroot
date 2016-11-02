@@ -22,3 +22,6 @@
 [submodule "wjrpc"]
 	path = wjrpc
 	url = git@github.lan:cpp/wjrpc.git
+[submodule "wrtstat"]
+	path = wrtstat
+	url = git@github.lan:cpp/wrtstat.git
