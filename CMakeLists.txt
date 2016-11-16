@@ -12,6 +12,8 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/iow)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wjson)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wjrpc)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/faslib)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wrtstat)
+
 
 add_subdirectory(faslib)
 add_subdirectory(wjson)
