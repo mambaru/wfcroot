@@ -38,6 +38,7 @@ set(
   wfc_io
   wfc_core
   wfc
+  wjrpc
 )
 
 target_link_libraries(wfcroot ${wfcroot_libraries})
