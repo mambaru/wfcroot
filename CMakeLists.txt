@@ -14,15 +14,15 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wjrpc)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/faslib)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wrtstat)
 
-
 add_subdirectory(faslib)
 add_subdirectory(wjson)
 add_subdirectory(wjrpc)
 add_subdirectory(wrtstat)
+
 add_subdirectory(iow)
 add_subdirectory(wfc)
-add_subdirectory(wfc_core)
 add_subdirectory(wfc_io)
+add_subdirectory(wfc_core)
 add_subdirectory(wfc_jsonrpc)
 
 include(Wfc)
