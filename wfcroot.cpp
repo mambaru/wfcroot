@@ -24,19 +24,23 @@ namespace
 std::list< std::shared_ptr<ipackage> >
 wfcroot( std::list< std::shared_ptr<ipackage> > packages)
 {
-  packages.sort(wfcroot_less);
-
   std::list< std::shared_ptr<ipackage> > defpack =
   {
     std::make_shared<core_package>(),
     std::make_shared<io_package>(),
     std::make_shared<jsonrpc_package>()
   };
-
-  defpack.sort(wfcroot_less);
-  packages.merge(defpack, wfcroot_less);
-  packages.unique(wfcroot_equal);
-  return packages;
+  
+  for (auto p : packages )
+  {
+    auto end = std::remove_if( defpack.begin(),  defpack.end(), [p](std::shared_ptr<ipackage> dp) 
+    {
+      return dp->name() == p->name();
+    });
+    defpack.erase(end, defpack.end() );
+  }
+  std::copy(packages.begin(), packages.end(), std::back_inserter(defpack));
+  return defpack;
 }
 
 }
