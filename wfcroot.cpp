@@ -8,21 +8,8 @@
 
 namespace wfc{ 
 
-namespace 
-{
-  inline bool wfcroot_less(std::shared_ptr<ipackage> left, std::shared_ptr<ipackage> right)
-  {
-    return left->name() < right->name();
-  }
-
-  inline bool wfcroot_equal(std::shared_ptr<ipackage> left, std::shared_ptr<ipackage> right)
-  {
-    return left->name() == right->name();
-  }
-}
-
 std::list< std::shared_ptr<ipackage> >
-wfcroot( std::list< std::shared_ptr<ipackage> > packages)
+  wfcroot( std::list< std::shared_ptr<ipackage> > packages)
 {
   std::list< std::shared_ptr<ipackage> > defpack =
   {
