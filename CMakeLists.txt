@@ -39,6 +39,7 @@ set(
   wfc_core
   wfc
   wjrpc
+  wrtstat
 )
 
 target_link_libraries(wfcroot ${wfcroot_libraries})
