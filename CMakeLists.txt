@@ -10,6 +10,7 @@ endif()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wfc)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/iow)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wjson)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wlog)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wjrpc)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/faslib)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wrtstat)
@@ -17,6 +18,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wrtstat)
 add_subdirectory(faslib)
 add_subdirectory(wjson)
 add_subdirectory(wjrpc)
+add_subdirectory(wlog)
 add_subdirectory(wrtstat)
 
 add_subdirectory(iow)
@@ -40,6 +42,7 @@ set(
   wfc
   wjrpc
   wrtstat
+  wlog
 )
 
 target_link_libraries(wfcroot ${wfcroot_libraries})

@@ -25,3 +25,6 @@
 [submodule "wrtstat"]
 	path = wrtstat
 	url = git@github.lan:cpp/wrtstat.git
+[submodule "wlog"]
+	path = wlog
+	url = git@github.lan:cpp/wlog.git
