@@ -40,6 +40,7 @@ set(
   wfc_core
   wfc
   wjrpc
+  iow
   wrtstat
   wlog
 )
