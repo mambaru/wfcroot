@@ -7,17 +7,19 @@ if ( NOT WFC_READY )
   include(Wfc)
 endif()
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wfc)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/iow)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wjson)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wlog)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wjrpc)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/faslib)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wrtstat)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wfc)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/iow)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wjson)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wlog)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wflow)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wjrpc)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/faslib)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wrtstat)
 
 add_subdirectory(faslib)
 add_subdirectory(wjson)
 add_subdirectory(wlog)
+add_subdirectory(wflow)
 add_subdirectory(wrtstat)
 add_subdirectory(iow)
 add_subdirectory(wjrpc)
@@ -40,6 +42,7 @@ set(
   wfc_core
   wfc
   wjrpc
+  wflow
   iow
   wrtstat
   wlog

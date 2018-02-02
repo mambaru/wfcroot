@@ -28,3 +28,6 @@
 [submodule "wlog"]
 	path = wlog
 	url = git@github.lan:cpp/wlog.git
+[submodule "wflow"]
+	path = wflow
+	url = git@github.lan:cpp/wflow.git
