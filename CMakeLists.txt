@@ -1,16 +1,16 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1)
 
 project(wfcroot)
 
-set(BUILD_TESTING OFF)
-
-if ( NOT WFC_READY )
-  set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/wfc/cmake")
-  include(Wfc)
-endif()
-
-set(WLOG_DISABLE_JSON ON)
-set(WFLOW_DISABLE_JSON ON)
+#include_directories(faslib)
+#include_directories(wjson)
+#include_directories(wlog)
+#include_directories(wflow)
+#include_directories(wrtstat)
+#include_directories(iow)
+#include_directories(wjrpc)
+#include_directories(wfc)
+include(wfc)
 
 add_subdirectory(faslib)
 add_subdirectory(wjson)
@@ -23,8 +23,6 @@ add_subdirectory(wfc)
 add_subdirectory(wfc_io)
 add_subdirectory(wfc_core)
 add_subdirectory(wfc_jsonrpc)
-
-include(Wfc)
 
 add_library(
   wfcroot
@@ -46,3 +44,5 @@ set(
 
 target_link_libraries(wfcroot ${wfcroot_libraries})
 add_dependencies(wfcroot ${wfcroot_libraries})
+
+
