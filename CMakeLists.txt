@@ -18,6 +18,8 @@ include_directories(iow)
 include_directories(wjrpc)
 include_directories(wfc)
 
+set( BUILD_TESTING_OLD ${BUILD_TESTING} )
+set( BUILD_TESTING OFF )
 add_subdirectory(faslib)
 add_subdirectory(wjson)
 add_subdirectory(wlog)
@@ -29,6 +31,7 @@ add_subdirectory(wfc)
 add_subdirectory(wfc_io)
 add_subdirectory(wfc_core)
 add_subdirectory(wfc_jsonrpc)
+set( BUILD_TESTING ${BUILD_TESTING_OLD} )
 
 add_library(
   wfcroot
@@ -53,5 +56,4 @@ add_dependencies(wfcroot ${wfcroot_libraries})
 
 if ( BUILD_TESTING )
   enable_testing()
-  
 endif()
