@@ -31,3 +31,6 @@
 [submodule "wflow"]
 	path = wflow
 	url = git@github.lan:cpp/wflow.git
+[submodule "external/cmake-ci"]
+	path = external/cmake-ci
+	url = git@github.lan:cpp/cmake-ci.git

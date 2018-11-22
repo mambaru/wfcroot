@@ -1,0 +1,30 @@
+dist:     trusty
+sudo:     required
+
+language: cpp
+
+os:
+  - linux
+
+before_install:
+  - sudo apt-get update -qq
+
+install: 
+  - sudo apt-get install -y libc++-dev libboost-dev 
+  - sudo apt-get install -y libboost-system-dev libboost-program-options-dev 
+  - sudo apt-get install -y libboost-filesystem-dev libboost-date-time-dev libboost-regex-dev valgrind doxygen
+
+compiler:
+  - g++
+  - clang++ 
+
+branches:
+  only:
+    - mambaru
+    - master
+
+script:
+  - git submodule sync
+  - git submodule update --init --force
+  - bash .ci/build-and-test.sh g++ 11 Release
+  - bash .ci/build-and-test.sh clang++ 11 Release
