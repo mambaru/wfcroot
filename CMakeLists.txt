@@ -5,9 +5,27 @@ project(wfcroot)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(ci)
 
+file(GLOB RESULT ${CMAKE_CURRENT_SOURCE_DIR}/wfc)
+list(LENGTH RESULT RES_LEN)
+if(RES_LEN EQUAL 0)
+  execute_process(
+    COMMAND 
+      git submodule update --init
+    WORKING_DIRECTORY 
+      ${CMAKE_CURRENT_SOURCE_DIR}
+    RESULT_VARIABLE
+      EXIT_CODE
+    ERROR_QUIET
+  )
+endif()
+
+
+
 if ( STANDALONE )
   list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/wfc/cmake)
 endif()
+
+
 
 include_directories(faslib)
 include_directories(wjson)
