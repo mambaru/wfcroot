@@ -294,6 +294,7 @@ push-to-github:
     -   git checkout mambaru
     -   git submodule deinit -f .
     -   rm -rf .git/modules
+    -   git rm -rf .gitmodules
     -   git rm -rf .ci
     -   git rm -rf external
     -   git rm .gitlab-ci.yml
