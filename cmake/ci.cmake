@@ -5,7 +5,7 @@ else()
 endif()
 
 if ( STANDALONE )
-  if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/external/cmake-ci/ci.cmake)
+  if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/external/cmake-ci/cmake/ci.cmake)
     execute_process(
       COMMAND 
         git submodule update --init -- "external/cmake-ci"
