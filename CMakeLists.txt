@@ -7,8 +7,18 @@ include(ci)
 
 getlibs(faslib wjson wlog wflow iow wjrpc wrtstat wfc)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/wfc/cmake)
-
 getlibs(wfc_core wfc_io wfc_jsonrpc)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/wfc)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/iow)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/wjson)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/faslib)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/wlog)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/wflow)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/wrtstat)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/wjrpc)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
 
 add_library(
   wfcroot
