@@ -5,43 +5,20 @@ project(wfcroot)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(ci)
 
-if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/wfc/CMakeLists.txt)
-  execute_process(
-    COMMAND 
-      git submodule update --init
-    WORKING_DIRECTORY 
-      ${CMAKE_CURRENT_SOURCE_DIR}
-    RESULT_VARIABLE
-      EXIT_CODE
-    ERROR_QUIET
-  )
-endif()
+getlibs(faslib wjson wlog wflow iow wjrpc wrtstat wfc)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/wfc/cmake)
+getlibs(wfc_core wfc_io wfc_jsonrpc)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/wfc/cmake)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/wfc)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/iow)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/wjson)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/faslib)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/wlog)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/wflow)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/wrtstat)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/wjrpc)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-include_directories(faslib)
-include_directories(wjson)
-include_directories(wlog)
-include_directories(wflow)
-include_directories(wrtstat)
-include_directories(iow)
-include_directories(wjrpc)
-include_directories(wfc)
-
-set( BUILD_TESTING_OLD ${BUILD_TESTING} )
-set( BUILD_TESTING OFF )
-add_subdirectory(faslib)
-add_subdirectory(wjson)
-add_subdirectory(wlog)
-add_subdirectory(wflow)
-add_subdirectory(wrtstat)
-add_subdirectory(iow)
-add_subdirectory(wjrpc)
-add_subdirectory(wfc)
-add_subdirectory(wfc_io)
-add_subdirectory(wfc_core)
-add_subdirectory(wfc_jsonrpc)
-set( BUILD_TESTING ${BUILD_TESTING_OLD} )
 
 add_library(
   wfcroot
@@ -53,16 +30,15 @@ find_package(Boost COMPONENTS system program_options filesystem date_time regex 
 
 set(
   wfcroot_libraries
-  wfc_jsonrpc
-  wfc_io
-  wfc_core
-  wfc
-  wjrpc
-  wflow
-  iow
-  wrtstat
-  wlog
-  
+    wfc_jsonrpc
+    wfc_io
+    wfc_core
+    wfc
+    wjrpc
+    wflow
+    iow
+    wrtstat
+    wlog
 )
 
 target_link_libraries(
