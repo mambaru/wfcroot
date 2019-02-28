@@ -5,7 +5,10 @@ else()
 endif()
 
 if ( STANDALONE )
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2f9b6fffdc4fec29da7102f6929dd7ea255a0fb1
   if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/external/cmake-ci/cmake/ci.cmake)
     execute_process(
       COMMAND 

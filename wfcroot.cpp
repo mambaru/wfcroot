@@ -1,8 +1,11 @@
-#include "wfc_jsonrpc/package/jsonrpc_package.hpp"
-#include "wfc_core/package/core_package.hpp"
-#include "wfc_io/package/io_package.hpp"
 
 #include "wfcroot.hpp"
+
+#include <package/jsonrpc_package.hpp>
+#include <package/core_package.hpp>
+#include <package/io_package.hpp>
+#include <wfc/module/ipackage.hpp>
+
 #include <algorithm>
 #include <iostream>
 
