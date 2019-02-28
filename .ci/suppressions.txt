@@ -1,3 +1,0 @@
-unusedFunction:./wfcroot.cpp:15
-missingInclude:./wfcroot.cpp:15
-unmatchedSuppression:./wfcroot.cpp:15
