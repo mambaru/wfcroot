@@ -1,36 +1,3 @@
-[submodule "faslib"]
-	path = faslib
-	url = git@github.lan:cpp/faslib.git
-[submodule "iow"]
-	path = iow
-	url = git@github.lan:cpp/iow.git
-[submodule "wfc"]
-	path = wfc
-	url = git@github.lan:cpp/wfc.git
-[submodule "wfc_core"]
-	path = wfc_core
-	url = git@github.lan:cpp/wfc_core.git
-[submodule "wfc_jsonrpc"]
-	path = wfc_jsonrpc
-	url = git@github.lan:cpp/wfc_jsonrpc.git
-[submodule "wfc_io"]
-	path = wfc_io
-	url = git@github.lan:cpp/wfc_io.git
-[submodule "wjson"]
-	path = wjson
-	url = git@github.lan:cpp/wjson.git
-[submodule "wjrpc"]
-	path = wjrpc
-	url = git@github.lan:cpp/wjrpc.git
-[submodule "wrtstat"]
-	path = wrtstat
-	url = git@github.lan:cpp/wrtstat.git
-[submodule "wlog"]
-	path = wlog
-	url = git@github.lan:cpp/wlog.git
-[submodule "wflow"]
-	path = wflow
-	url = git@github.lan:cpp/wflow.git
 [submodule "external/cmake-ci"]
 	path = external/cmake-ci
-	url = git@github.lan:cpp/cmake-ci.git
+	url = https://github.com/mambaru/cmake-ci.git
