@@ -9,6 +9,6 @@ add_executable(
 )
 
 target_link_libraries(package_test wfcroot)
-add_test(NAME package_test COMMAND wfcroot)
+add_test(NAME package_test COMMAND package_test)
 
 
