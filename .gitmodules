@@ -1,3 +1,19 @@
 [submodule "external/cmake-ci"]
 	path = external/cmake-ci
 	url = https://github.com/mambaru/cmake-ci.git
+[submodule "external/wfc"]
+	path = external/wfc
+	url = https://github.com/mambaru/wfc.git
+	branch = master
+[submodule "external/wfc_core"]
+	path = external/wfc_core
+	url = https://github.com/mambaru/wfc_core.git
+	branch = master
+[submodule "external/wfc_io"]
+	path = external/wfc_io
+	url = https://github.com/mambaru/wfc_io.git
+	branch = master
+[submodule "external/wfc_jsonrpc"]
+	path = external/wfc_jsonrpc
+	url = https://github.com/mambaru/wfc_jsonrpc.git
+	branch = master
