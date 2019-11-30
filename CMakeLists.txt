@@ -4,9 +4,10 @@ project(wfcroot)
 
 include(cmake/ci.cmake)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/wfc/cmake)
-getlibs(faslib wjson wlog wflow iow wjrpc wrtstat wfc)
-getlibs(wfc_core wfc_io wfc_jsonrpc)
+wci_getlib(NAME wfc SUPERMODULE )
+wci_getlib(NAME wfc_core )
+wci_getlib(NAME wfc_io )
+wci_getlib(NAME wfc_jsonrpc )
 
 add_subdirectory(wfcroot)
 
