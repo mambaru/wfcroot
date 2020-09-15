@@ -16,7 +16,7 @@ class tank_domain
   , public std::enable_shared_from_this< tank_domain<Name, I, Opt> >
 {
   typedef std::chrono::time_point<std::chrono::high_resolution_clock> time_point_t;
-  
+
   struct bang_stat
   {
     size_t wait_counter = 0;
@@ -25,7 +25,7 @@ class tank_domain
     size_t bad_counter = 0;
     time_point_t start_time;
     time_point_t finish_time;
-    
+
     size_t get_interval() const
     {
       return static_cast<size_t>( std::chrono::duration_cast<std::chrono::microseconds>(finish_time - start_time).count() );
@@ -39,7 +39,7 @@ class tank_domain
   };
 
 public:
-  typedef std::mutex mutex_type;
+  typedef std::recursive_mutex mutex_type;
   typedef tank_domain<Name, I, Opt> self;
   typedef igun<I, Opt> gun_interface;
   typedef waffel_domain<Opt, stat_tank_options> super;
@@ -53,13 +53,18 @@ public:
     _target = this->template get_target<I>(_options.target);
     _gun->initialize(_target, _options);
     _gunfire_counter = _options.gunfire_count;
-    
+
     if (auto pstat = this->get_statistics() )
       _meter = pstat->create_time_meter("time");
-    
+
     this->get_workflow()->safe_post( std::chrono::seconds(2), std::bind(&self::create_timer, this) );
     /*if ( this->get_statistics() == nullptr )
       abort();*/
+  }
+
+  virtual void stop() override
+  {
+    this->show_stat();
   }
 
   void create_timer()
@@ -69,7 +74,6 @@ public:
     _bang_stat.start_time = std::chrono::high_resolution_clock::now();
     this->get_workflow()->create_timer(std::chrono::microseconds(_options.gunfire_mks), std::bind(&self::gunfire, this) );
     this->get_workflow()->create_timer(std::chrono::milliseconds(_options.statistics_log_ms), std::bind(&self::show_stat, this) );
-    this->global()->after_stop.insert(std::bind(&self::show_stat, this));
   }
 
   bool gunfire()
@@ -77,7 +81,7 @@ public:
     std::lock_guard<mutex_type> lk(_mutex);
     if ( this->global_stop_flag() )
       return false;
-    
+
     if ( _gunfire_counter == 0 && _bang_stat.wait_counter == 0)
     {
       DOMAIN_LOG_END("---------------FINISH--------------------")
@@ -101,7 +105,7 @@ public:
           --_bang_stat.wait_counter;
           ++_bang_stat.response_counter;
           if ( !status) ++_bang_stat.bad_counter;
-          if ( !status || _bang_stat.wait_counter==0)
+          if ( !status /* || _bang_stat.wait_counter==0 */ )
           {
             auto finish = std::chrono::high_resolution_clock::now();
             auto interal = std::chrono::duration_cast<std::chrono::microseconds>(finish - _bang_stat.start_time).count();
@@ -111,11 +115,12 @@ public:
             wfc_exit();
           }
         });
+        DEBUG_LOG_END("BANG Done!")
       }
     }
     return !this->global_stop_flag() && _gunfire_counter!=0;
   }
-  
+
   bool show_stat()
   {
     bang_stat cur_stat;
@@ -126,10 +131,10 @@ public:
     TANK_LOG_MESSAGE("\tCOUNT: " << cur_stat.response_counter)
     TANK_LOG_MESSAGE("\tWAIT: " << long(cur_stat.wait_counter) )
     TANK_LOG_MESSAGE("\tBAD: " << cur_stat.bad_counter)
-    
+
     return true;
   }
-  
+
   bang_stat start_stat()
   {
     std::lock_guard<mutex_type> lk(_mutex);
@@ -140,7 +145,7 @@ public:
     _bang_stat.start_time = std::chrono::high_resolution_clock::now();
     return res;
   }
-  
+
 private:
   std::shared_ptr<gun_interface> _gun;
   std::shared_ptr<I> _target;

@@ -24,8 +24,23 @@ public:
   typedef std::function< void(response_ptr) >  handler_t;
   typedef void (I::* target_method)(request_ptr, handler_t);
 
-  typedef std::function<bool(const user_options&, request_ptr&)> request_generator;
-  typedef std::function<bool(const user_options&, const response_ptr&)> response_checker;
+  typedef std::function<bool(request_ptr&)> request_generator1;
+  typedef std::function<bool(const user_options&, request_ptr&)> request_generator2;
+
+  typedef typename fas::if_<
+    fas::same_type<user_options, fas::empty_type>,
+    request_generator1,
+    request_generator2
+  >::type request_generator;
+
+  typedef std::function<bool(const response_ptr&)> response_checker1;
+  typedef std::function<bool(const user_options&, const response_ptr&)> response_checker2;
+
+  typedef typename fas::if_<
+    fas::same_type<user_options, fas::empty_type>,
+    response_checker1,
+    response_checker2
+  >::type response_checker;
 
   tank_gun(
     target_method tm,
@@ -47,16 +62,49 @@ public:
   {
     auto req = std::make_unique<request_type>();
     *req = _options.request;
-    if ( _req_gen!=nullptr && !_req_gen(_options, req) )
+    typedef fas::bool_< fas::same_type<user_options, fas::empty_type>::value > no_user_options;
+    if ( !req_gen_( static_cast<const user_options&>(_options), req,  no_user_options() ) )
       return false;
 
     (_target.get()->*_target_method)(std::move(req), [handler, this](response_ptr res)
     {
-      handler( res!=nullptr && (this->_res_check == nullptr || this->_res_check(this->_options, res) ) );
+      bool check_result = this->res_check_( static_cast<const user_options&>(this->_options), res, no_user_options());
+      handler( res!=nullptr && check_result );
     });
 
     return true;
   }
+
+private:
+
+  template<typename UserOptions>
+  bool req_gen_(const UserOptions&, std::unique_ptr<request_type>& req, fas::true_)
+  {
+    if ( _req_gen == nullptr ) return true;
+    return _req_gen(req);
+  }
+
+  template<typename UserOptions>
+  bool req_gen_(const UserOptions& uopt, std::unique_ptr<request_type>& req, fas::false_)
+  {
+    if ( _req_gen == nullptr ) return true;
+    return _req_gen(uopt, req);
+  }
+
+  template<typename UserOptions>
+  bool res_check_(const UserOptions&, std::unique_ptr<response_type>& res, fas::true_)
+  {
+    if ( _res_check == nullptr ) return true;
+    return _res_check(res);
+  }
+
+  template<typename UserOptions>
+  bool req_gen_(const UserOptions& uopt, std::unique_ptr<response_type>& res, fas::false_)
+  {
+    if ( _res_check == nullptr ) return true;
+    return _res_check(uopt, res);
+  }
+
 private:
   target_ptr _target;
   target_method _target_method;
