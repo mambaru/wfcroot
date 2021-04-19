@@ -11,13 +11,14 @@ namespace wfc
 {
 
 template<
-  typename Name, 
-  typename DomainObject, 
+  typename BuildInfo, /*= build_info_t<Name, empty_build_info>*/
+  typename Name,
+  typename DomainObject,
   typename J = wjson::empty_object<typename DomainObject::options_type>,
   typename SJ = wjson::empty_object<nostat>
 >
 class waffel_package: public module_list<
-              named_build_info<Name>,
+              BuildInfo,
               component_list<
                 Name,
                 multiton<
