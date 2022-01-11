@@ -6,10 +6,10 @@ set(BUILD_TESTING OFF)
 
 include(cmake/ci.cmake)
 
-wci_getlib(NAME wfc SUPERMODULE )
-wci_getlib(NAME wfc_core )
-wci_getlib(NAME wfc_io )
-wci_getlib(NAME wfc_jsonrpc )
+wci_submodule(NAME wfc SUPERMODULE )
+wci_submodule(NAME wfc_core )
+wci_submodule(NAME wfc_io )
+wci_submodule(NAME wfc_jsonrpc )
 
 add_subdirectory(wfcroot)
 
