@@ -6,7 +6,7 @@ set(BUILD_TESTING OFF)
 
 include(cmake/ci.cmake)
 
-wci_submodule(NAME wfc SUPERMODULE )
+wci_submodule(NAME wfc SUPERMODULE INTERNAL)
 wci_submodule(NAME wfc_core )
 wci_submodule(NAME wfc_io )
 wci_submodule(NAME wfc_jsonrpc )
