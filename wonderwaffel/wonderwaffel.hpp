@@ -17,7 +17,7 @@ class wonderwaffel
   template<typename N, typename ReqJson, typename ResJson, typename OptJson, typename I>
   struct tank_helper
   {
-    typedef tank_package<N, I, tank_options_json<ReqJson, ResJson, OptJson>, build_info_t<N, BuildInfo> > package_type;
+    typedef tank_package<N, I, tank_config_json<ReqJson, ResJson, OptJson>, build_info_t<N, BuildInfo> > package_type;
     typedef typename package_type::request_type request_type;
     typedef typename package_type::response_type response_type;
     typedef typename package_type::request_ptr request_ptr;
@@ -37,6 +37,20 @@ class wonderwaffel
   {
   };
 
+  template<typename N >
+  struct tank_helper3: tank_helper<
+    N, wjson::raw_value<iinterface::data_type>, 
+    wjson::raw_value<iinterface::data_type>, 
+    wjson::empty_object<>, iinterface >
+  {};
+
+  template<typename N, typename OptJ >
+  struct tank_helper4: tank_helper<
+    N, wjson::raw_value<iinterface::data_type>, 
+    wjson::raw_value<iinterface::data_type>, 
+    OptJ, iinterface >
+  {};
+
 public:
   template<typename T>
   void add_package()
@@ -51,6 +65,18 @@ public:
     _packages.push_back( std::make_shared<package_type>() );
   }
 
+  template<typename N, typename ReqJ, typename ResJ, typename OptJ, typename I>
+  void add_tank(
+    void (I::* mem_ptr)(std::unique_ptr<typename ReqJ::target>, std::function< void(std::unique_ptr<typename ResJ::target>) >),
+    typename tank_helper<N, ReqJ, ResJ, OptJ, I>::request_generator rg = nullptr,
+    typename tank_helper<N, ReqJ, ResJ, OptJ, I>::response_checker rc = nullptr
+  )
+  {
+    auto ptank = std::make_shared< typename tank_helper<N, ReqJ, ResJ, OptJ, I>::package_type >(mem_ptr, rg, rc);
+    _packages.push_back(ptank);
+  }
+
+
   template<typename N, typename ReqJ, typename ResJ, typename I>
   void add_tank(
     void (I::* mem_ptr)(std::unique_ptr<typename ReqJ::target>, std::function< void(std::unique_ptr<typename ResJ::target>) >),
@@ -63,17 +89,6 @@ public:
   }
 
 
-  template<typename N, typename ReqJ, typename ResJ, typename OptJ, typename I>
-  void add_tank(
-    void (I::* mem_ptr)(std::unique_ptr<typename ReqJ::target>, std::function< void(std::unique_ptr<typename ResJ::target>) >),
-    typename tank_helper<N, ReqJ, ResJ, OptJ, I>::request_generator rg = nullptr,
-    typename tank_helper<N, ReqJ, ResJ, OptJ, I>::response_checker rc = nullptr
-  )
-  {
-    auto ptank = std::make_shared< typename tank_helper<N, ReqJ, ResJ, OptJ, I>::package_type >(mem_ptr, rg, rc);
-    _packages.push_back(ptank);
-  }
-
   template<typename N, typename Req, typename Res, typename I>
   void add_tank(
     void (I::* mem_ptr)(std::unique_ptr<Req>, std::function< void(std::unique_ptr<Res>) >),
@@ -85,6 +100,24 @@ public:
     _packages.push_back(ptank);
   }
 
+  template<typename N>
+  void add_tank_io(
+    typename tank_helper3<N>::request_generator rg = nullptr,
+    typename tank_helper3<N>::response_checker rc = nullptr )
+  {
+  
+    auto ptank = std::make_shared< typename tank_helper3<N>::package_type >(&iinterface::perform_io, rg, rc);
+    _packages.push_back(ptank);
+  }
+
+  template<typename N, typename OptJ >
+  void add_tank_io(
+    typename tank_helper4<N, OptJ>::request_generator rg = nullptr,
+    typename tank_helper4<N, OptJ>::response_checker rc = nullptr )
+  {
+    auto ptank = std::make_shared< typename tank_helper4<N, OptJ>::package_type >(&iinterface::perform_io, rg, rc);
+    _packages.push_back(ptank);
+  }
 
   int run(int argc, char* argv[], std::string helpstring = std::string() )
   {

@@ -1,0 +1,3 @@
+unknownMacro:
+unusedFunction:
+missingInclude:./wonderwaffel/wonderwaffel.cpp

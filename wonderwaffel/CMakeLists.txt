@@ -1,0 +1,5 @@
+add_executable(wonderwaffel wonderwaffel.cpp)
+target_link_libraries(wonderwaffel PRIVATE wfcroot)
+add_dependencies(wonderwaffel wfcroot)
+build_info(PREFIX wonderwaffel TARGET wonderwaffel)
+wci_utils(wonderwaffel)
