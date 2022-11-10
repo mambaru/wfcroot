@@ -12,7 +12,10 @@ wci_submodule(NAME wfc_io )
 wci_submodule(NAME wfc_jsonrpc )
 
 add_subdirectory(wfcroot)
-add_subdirectory(wonderwaffel)
+
+if ( BUILD_WONDERWAFFEL )
+  add_subdirectory(wonderwaffel)
+endif()
 
 if ( BUILD_TESTING )
   enable_testing()
